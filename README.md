@@ -2,7 +2,7 @@
 ## Department of Information and Computing Science
 ### Applied Data Science master thesis
 
-### An improved quality pipeline for Google Location History data (placeholder)
+### Identifying and improving quality issues in Google Semantic Location History DDPs for public transport activities
 
 First examiner: Erik-Jan van Kesteren
 
@@ -11,17 +11,9 @@ Second examiner: Thijs Carrière
 Candidate: Daniëlle Bakker 0187410
 
 ## Description project
-Digital privacy and data protection has become an important topic resulting in new laws being made.
-This includes the right for people to access their own personal data and share this with other parties.
-As a responds, companies now give their users the opportunity to download their data as Data Download Package
-(DDPs) which users can then donate to research studies. A recent study used the Google Semantic Location History
-DDPs to investigate how the COVID-19 pandemic changed travel behavior. The problem is that these DDPs contain
-potential quality issues which can influence the conclusion. The aim of this project is to identify these potential
-quality issues and take them into account by flagging or data imputation. The result is a python script that checks
-if different parts of the data meet set requirements to locate the quality issues. This script will count the number
-of errors and use data imputation where possible. This should lead to a more accurate data extraction which would in
-turn lead to a better understanding of the travel behaviors. There are still multiple steps needed to make the
-extraction as accurate to reality as possible with some perhaps for Google with mobile sensors and algorithms.
+The aim of this project is to identify and improve potential quality issues. 
+These scripts will count the number of errors and use data imputation where possible. This will lead to a more accurate 
+data extraction which in turn will lead to a better understanding of the travel behaviors.
 
 ## Requirements
 [Eyra Port POC](https://github.com/eyra/port-poc)
@@ -32,62 +24,93 @@ Geopandas 0.13.0
 
 Haversine 2.8.0
 
-## Input files
+## Input
+All files need to be in the input folder
 - The file with Google Semantic Location History data
-  - port-poc-master/data_extractor/tests/data/Takeout.zip
+  - input/Takeout.zip
 - Files with coordinates of public transport station and stop location
-  - stations/Train stations.csv
-  - stations/Bus stops.csv
-  - stations/Tram stops.csv
-  - stations/Subway stops.csv
-  - stations/Airports.csv
+  - input/stations/Train stations.csv
+  - input/stations/Bus stops.csv
+  - input/stations/Tram stops.csv
+  - input/stations/Subway stops.csv
+  - input/stations/Airports.csv
 
 ## Python scripts
-- main.py
+- main.py <br/>
   Starts the extraction
 
-__init__.py
-Loads all the files and call the different functions
+- __init__.py <br/>
+  Loads all the files and call the different functions
 
-station_activity.py
-Checks if start and end location are public transport locations and counts the errors. When not a train station, it
-will check if there are tram or subway station instead
-    _create_coordinates
-    Transforms the public transport stations and stops to EPSG 4326 and EPSG 32634
-    _transform_coordinates
-    Transforms coordinates of the start or end location
-    _check_location
-    Checks if start or end location is an airport and counts when not
-    _train_check_location
-    Checks if start or end location is an train station and counts when not
-    _station_different_location
-    Checks if start or end location is an tram or subway stop and counts when it is
-    _airport_check_location
-    Checks if start or end location is an airport and counts when it is
+- total_activity.py <br/>
+  Calculates the total distance andduration <br/>
+  Count the total number per activity types and missing distances <br/>
+  Adds milliseconds to timestamps that don't have this and counts this <br/>
+    _activity_distance <br/>
+    Get total distance of activities in km <br/>
+    _activity_duration <br/>
+    Get total duration of activities <br/>
+    _activity_count <br/>
+    Counts how often an activity type was predicted <br/>
+    _test_time_format <br/>
+    Adds milliseconds to the timestamp when necessary and counts when this is needed <br/>
+    _test_missing_distance <br/>
+    Count number of times distance is missing from the activity segment <br/>
 
-total_activity.py
-    _activity_distance
-    Get total distance of activities in km
-    _activity_duration
-    Get total duration of activities
-    _activity_count
-    Counts how often an activity type was predicted
-    _test_time_format
-    Add milliseconds to the timestamp when necessary and counts when this is needed
-    _test_missing_distance
-    Count number of times distance is missing from the activity segment
+- station_activity.py <br/>
+  Checks if start and end location are public transport locations and counts the errors. When not a train station, it
+  will check if there are tram or subway station instead <br/>
+    _create_coordinates <br/>
+    Transforms the public transport stations and stops to EPSG 4326 and EPSG 32634 <br/>
+    _transform_coordinates <br/>
+    Transforms coordinates of the start or end location <br/>
+    _check_location <br/>
+    Checks if start or end location is an airport and counts when not <br/>
+    _train_check_location <br/>
+    Checks if start or end location is an train station and counts when not <br/>
+    _station_different_location <br/>
+    Checks if start or end location is an tram or subway stop and counts when it is <br/>
+    _airport_check_location <br/>
+    Checks if start or end location is an airport and counts when it is <br/>
 
-speed_activity.py
-Check if the travels meet the requirement of the average speed being lower than the maximum speed
-    _check_speed_requirement
-    Counts how often the speed requirement of the activity type is not met
-    _average_speed
-    Calculates the average speed of an activity
-    _test_time_format:
-    Add milliseconds to the timestamp when necessary
+- speed_activity.py <br/>
+  Check if the travels meet the requirement of the average speed being lower than the maximum speed <br/>
+    _check_speed_requirement <br/>
+    Counts how often the speed requirement of the activity type is not met <br/>
+    _average_speed <br/>
+    Calculates the average speed of an activity <br/>
+    _test_time_format <br/>
+    Adds milliseconds to the timestamp when necessary <br/>
 
+- duration_activity.py <br/>
+  Checks if the activity is no longer than 24 hours and counts when this requirement is not met <br/>
+    _check_duration <br/>
+    Checks if the duration is no longer than 24 hours <br/>
+    _test_time_format <br/>
+    Adds milliseconds to the timestamp when necessary <br/>
 
---Output file--
-File containing the results of the extraction
-results.csv
+- distance_activity.py <br/>
+  Checks if the differences between logged distance and haversine distances is no more than 5km and counts when this requirement is not 
+  met <br/>
+    _distance_total <br/>
+    Calculates the total distances of one month <br/>
+    _distance_compare <br/>
+    Checks if logged distance is within 5 kilometers of haversine distance and counts the times it is not <br/>
+    
+## Output
+All output can be found in the output folder
+- results.csv <br/>
+  File containing all the results of the extraction <br/>
+- results_train.csv <br/>
+  File containing all the results of the train <br/>
+- results_tram.csv <br/>
+  File containing all the results of the tram <br/>
+- results_bus.csv <br/>
+  File containing all the results of the bus <br/>
+- results_subway.csv <br/>
+  File containing all the results of the suwbay <br/>
+- results_plane.csv <br/>
+  File containing all the results of the plane <br/>
+- results_distance.csv <br/>
+  File containing all the results about the distance <br/>
 
