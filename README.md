@@ -114,3 +114,9 @@ All output can be found in the output folder
 - results_distance.csv <br/>
   File containing all the results about the distance <br/>
 
+## Run scripts
+- All the needed input files need to be in the input folder
+- All the scripts need to be in the main folder
+- Call main.py to run all the scripts
+- All the output files can be found in the output folder after the scripts are finished
+
