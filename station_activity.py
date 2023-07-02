@@ -12,7 +12,7 @@ warnings.filterwarnings('ignore')
 def _create_coordinates(coord_csv):
     """Transforms the public transport stations and stops to EPSG 4326 and EPSG 32634
     Args:
-        coord_csv: csv file with public transport x and y coordinates.
+        coord_csv: csv file with public transport x and y coordinates
 
     Returns:
         gdf_4326: dataframe of public transport stations with coordinates in EPSG 4326
