@@ -1,0 +1,7 @@
+Year,Month,Times traveled by tram,Times not a tram stop,Times tram stop found at train,Times traveled by tram with imputation,Average > maximum speed tram
+2017,SEPTEMBER,0,0,0,0,0
+2018,SEPTEMBER,5,1,6,6,0
+2019,SEPTEMBER,0,0,4,0,0
+2020,SEPTEMBER,0,0,0,0,0
+2021,SEPTEMBER,0,0,0,0,0
+2022,SEPTEMBER,2,0,25,10,0

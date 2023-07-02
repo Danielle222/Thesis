@@ -1,0 +1,7 @@
+Year,Month,Times traveled by train,Times not a train station,Times tram stop found,Times subway stop found,Times no other stop found,Times traveled by train with imputation,Average > maximum speed train,Times traveled by bus,Times not a bus stop,Average > maximum speed bus,Times traveled by tram,Times not a tram stop,Times traveled by tram with imputation,Average > maximum speed tram,Times traveled by subway,Times not a subway stop,Times traveled by subway with imputation,Average > maximum speed subway,Times traveled by plane,Times not an airport,Average > maximum speed plane,Activity Duration [days],Activity Distance [km],Times distance missing,Number of times wrong distance,Total distance with haversine distance,Times train travel > max duration,Times tram travel > max duration,Times bus travel > max duration,Times subway travel > max duration,Times plane travel > max duration
+2017,SEPTEMBER,34,0,0,0,0,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.603,738.815,0,0,738.815,1,1,1,1,1
+2018,SEPTEMBER,33,2,6,0,1,33,0,1,0,0,5,1,6,0,0,0,0,0,0,0,0,0.842,804.045,0,0,804.045,3,3,3,3,3
+2019,SEPTEMBER,31,16,4,6,15,31,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.731,709.593,5,3,765.577,0,0,0,0,0
+2020,SEPTEMBER,6,2,0,0,2,6,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0.204,169.408,0,0,169.408,0,0,0,0,0
+2021,SEPTEMBER,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0,0,0.0,0,0,0,0,0
+2022,SEPTEMBER,41,10,25,0,2,41,0,3,0,0,2,0,10,0,7,7,0,0,0,0,0,1.257,1509.16,0,1,1503.843,0,0,0,0,0

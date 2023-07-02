@@ -1,0 +1,7 @@
+Year,Month,Activity Distance [km],Times distance missing,Number of times wrong distance,Total distance with haversine distance
+2017,SEPTEMBER,738.815,0,0,738.815
+2018,SEPTEMBER,804.045,0,0,804.045
+2019,SEPTEMBER,709.593,5,3,765.577
+2020,SEPTEMBER,169.408,0,0,169.408
+2021,SEPTEMBER,0.0,0,0,0.0
+2022,SEPTEMBER,1509.16,0,1,1503.843
