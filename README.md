@@ -20,9 +20,11 @@ data extraction which in turn will lead to a better understanding of the travel 
 
 Python 3.8
 
-Geopandas 0.13.0
+[Geopandas 0.13.0](https://github.com/geopandas/geopandas)
 
-Haversine 2.8.0
+[Haversine 2.8.0](https://github.com/mapado/haversine)
+
+[Shapely 2.0.1](https://github.com/shapely/shapely)
 
 ## Input
 All files need to be in the input folder
