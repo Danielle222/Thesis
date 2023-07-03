@@ -10,11 +10,11 @@ def _check_duration(location_history, activity):
         count: times requirement not met
     """
     count = 0
-    for data_unit in location_history["timelineObjects"]:
-        if "activitySegment" in data_unit.keys():
-            if data_unit["activitySegment"]["activityType"]:
-                start_time = data_unit["activitySegment"]["duration"]["startTimestamp"]
-                end_time = data_unit["activitySegment"]["duration"]["endTimestamp"]
+    for location_history_unit in location_history["timelineObjects"]:
+        if "activitySegment" in location_history_unit.keys():
+            if location_history_unit["activitySegment"]["activityType"] == activity:
+                start_time = location_history_unit["activitySegment"]["duration"]["startTimestamp"]
+                end_time = location_history_unit["activitySegment"]["duration"]["endTimestamp"]
                 start_time = _test_time_format(start_time)
                 end_time = _test_time_format(end_time)
                 start_time = datetime.strptime(start_time, "%Y-%m-%dT%H:%M:%S.%fZ").timestamp()
